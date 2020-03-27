@@ -2,7 +2,9 @@ package com.salambrosalam.springdemo.mvc;
 
 import javax.validation.Valid;
 
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +14,17 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.tags.ThemeTag;
+
+
+
+
 
 @Controller
 @RequestMapping("/authorisation")
 public class AuthorisationController {
 	
 	
-	// add an initbinder ... to convert trim input strings
-	// remove leading and trailing whitespace
-	// resolve issue for our validation
 	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -50,10 +54,13 @@ public class AuthorisationController {
 	System.out.println("Binding result: " + theBindingResult);
 	
 	System.out.println("/n/n/n");
+	
+	
 		
 	if (theBindingResult.hasErrors()) {
 		return "authorisation-form";
 	}else {	 
+		theAuthorisation.write_data(theAuthorisation.getLogin(), theAuthorisation.getPassword());
 		return "welcome-form";
 	
 	}
