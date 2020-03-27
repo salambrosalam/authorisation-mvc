@@ -60,8 +60,16 @@ public class AuthorisationController {
 	if (theBindingResult.hasErrors()) {
 		return "authorisation-form";
 	}else {	 
-		theAuthorisation.write_data(theAuthorisation.getLogin(), theAuthorisation.getPassword());
-		return "welcome-form";
+		if(theAuthorisation.check_user(theAuthorisation.getLogin()) == true){
+			theAuthorisation.write_data(theAuthorisation.getLogin(), theAuthorisation.getPassword());
+			return "welcome-form";
+		} return "authorisation-form";
+			
+		
+			
+		
+		
+		
 	
 	}
 	

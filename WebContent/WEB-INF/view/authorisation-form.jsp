@@ -53,7 +53,7 @@
 <div class= "container">
 	<form:form action="welcForm" modelAttribute="authorisation">
 	<div class="input-container">
-		<span class = "label">Login</span>
+		<span class = "label">Registration</span>
 		<div>
 			<form:input path="login" class = "input"/>
 			<form:errors path="login" class="error" />
@@ -62,19 +62,21 @@
 	</div>
 
 	<div class = "input-container">	
-		<span class= "label">Password</span>
+
 		<div>
 			<form:input path="password" class = "input" /> 
 			<form:errors path="password" class="error" />
 		</div>
 	</div>	
 	
+		<input type="submit" value="Sign Up" class = "submit-button"/>
 		
-	
 		
-		<input type="submit" value="Submit" class = "submit-button"/>
-	
+			
 	</form:form>
+
+	<span class="error"></span>
+	
 </div>
 </body>
 
